@@ -1,6 +1,6 @@
 <?php
 /**
-  Template Name: Graphics
+  Template Name: Template-2
  * @package thecodemarvel
  */
 get_header();

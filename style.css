@@ -160,11 +160,20 @@ input.wpcf7-form-control.wpcf7-submit {
     padding: 10px 24px;
     transition: all 0.4s ease 0s;
 }
-#toplevel_page_hide-admin-menu
+/*#toplevel_page_hide-admin-menu
 {
 	display:none;
 }
 #toplevel_page_wck-page
 {
 	display:none;
+}*/
+.Portfolio .portfolio-item .portfolio-info{
+	opacity:1 !important;
+}
+
+.clients .owl-item img {
+    opacity: 1;
+    transition: ease-in-out 0.3s;
+     filter: none;
 }

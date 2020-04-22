@@ -133,3 +133,13 @@ function arphabet_widgets_init() {
     ) );
 }
 add_action( 'widgets_init', 'arphabet_widgets_init' );
+
+
+
+// add_filter('manage_orderlist_posts_columns', 'bs_orderlist_table_head');
+// function bs_orderlist_table_head( $defaults ) {
+    // $defaults['o_price']  = 'Order Price';
+    // return $defaults;
+// }
+
+
