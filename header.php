@@ -51,7 +51,9 @@
       </div>
       <div class="cta">
                   <?php echo do_shortcode( '[xoo_el_action type="login" change_to="logout"]' ); ?>
-        <!--<a href="#about" class="scrollto">Get Started</a>-->
+				  <?php if(is_user_logged_in()){ ?>
+				  <a href="<?php echo site_url();?>/account" class="scrollto">Dashboard</a>					  <?php }?>
+
       </div>
     </div>
   </section>

@@ -1,9 +1,20 @@
 <?php
 /**
-  Template Name: Template-2
+  Template Name: Searvice List
  * @package thecodemarvel
  */
 get_header();
+ 
+ $post_args = array(
+    'orderby' => 'menu_order',
+    'order' => 'ASC',
+    'post_type' => 'page',
+    'meta_key' => 'is-service-page',
+    'meta_value' => 'Yes',
+    'post_parent' =>$post->ID
+);
+$post_query = new WP_Query($post_args);
+
 ?>
 <!-- ======= Listing ======= -->
 <section id="listing" class="Portfolio">
@@ -14,39 +25,37 @@ get_header();
             <p data-aos="fade-up"> <?php echo($post->post_content); ?></p>
         </div>
 
-        <!--        <div class="row" data-aos="fade-up" data-aos-delay="100">
-                  <div class="col-lg-12 d-flex justify-content-center">
-                    <ul id="portfolio-flters">
-                      <li data-filter="*" class="filter-active">All</li>
-                      <li data-filter=".filter-app">App</li>
-                      <li data-filter=".filter-card">Card</li>
-                      <li data-filter=".filter-web">Web</li>
-                    </ul>
-                  </div>
-                </div>-->
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
             <?php
+
+
             $result = get_cfc_meta('imagesanddescription');
-            if ($result) {
-                foreach ($result as $key => $value) {
-                    $image_array = get_cfc_field('imagesanddescription', 'images', false, $key);
+            // if ($result) {
+            //     foreach ($result as $key => $value) {
+            //         $image_array = get_cfc_field('imagesanddescription', 'images', false, $key);
+        if ($post_query->have_posts()){
+                while ($post_query->have_posts()) : $post_query->the_post();
+                    $featured_img_url = get_the_post_thumbnail_url();
                     ?>
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="<?php echo $image_array['url']; ?>" class="img-fluid" alt="">
-                        <div href="<?php echo $image_array['url']; ?>" data-gall="portfolioGallery" class="venobox preview-link" title="">
-                            <div class="portfolio-info">
-                                <h4><?php echo $value['service-title']; ?></h4> <i class="bx bx-plus"></i>
-                                <!--<p><?php echo $value['servicedescription']; ?></p>-->
-                            </div>
-                        </div>
-                    </div>           
-                    <?php
-                }
-            } else {
+
+              <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                    <img src="<?php echo $featured_img_url; ?>" class="img-fluid" alt="">
+                    <div class="portfolio-info">
+                        <h4><?php echo $post->post_title; ?></h4>
+
+                        <a href="<?php echo $featured_img_url; ?>" data-gall="portfolioGallery" class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+                        <a href="<?php echo $post->guid; ?>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                           <!--<p><?php //echo $post->post_content; ?></p>-->
+                    </div>
+                </div> 
+
+             <?php
+                 endwhile;
+                 wp_reset_postdata();
+             }
+             else 
+             {
                 ?>
-
-
                 <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                     <img src="<?php echo get_template_directory_uri() ?>/assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
                     <div class="portfolio-info">
@@ -92,37 +101,9 @@ get_header();
                         <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
                     </div>
                 </div>
-
-                <!--          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                              <h4>Card 1</h4>
-                              <p>Card</p>
-                              <a href="<?php echo get_template_directory_uri() ?>/assets/img/portfolio/portfolio-7.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-                              <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                            </div>
-                          </div>
-                
-                          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                              <h4>Card 3</h4>
-                              <p>Card</p>
-                              <a href="<?php echo get_template_directory_uri() ?>/assets/img/portfolio/portfolio-8.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-                              <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                            </div>
-                          </div>
-                
-                          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                              <h4>Web 3</h4>
-                              <p>Web</p>
-                              <a href="<?php echo get_template_directory_uri() ?>/assets/img/portfolio/portfolio-9.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                              <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                            </div>
-                          </div>-->
+              
             <?php }
+              wp_reset_postdata();
             ?> 
         </div>
 
@@ -141,7 +122,6 @@ get_header();
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/software/adobe-indesign.png" alt="">
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/software/adobe-illustrator.png" alt="">
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/software/CorelDraw.png" alt="">
-
         </div>
 
       </div>

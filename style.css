@@ -1,10 +1,10 @@
 /*!
-Theme Name: thecodemarvel-1
+Theme Name: thecodemarve-2
 Theme URI: www.thecodemarvel.com/
 Author: thecodemarvel
 Author URI: www.thecodemarvel.com/
 Description: Description
-Version: 1.1.0
+Version: 1.2.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: thecodemarvel
@@ -176,4 +176,14 @@ input.wpcf7-form-control.wpcf7-submit {
     opacity: 1;
     transition: ease-in-out 0.3s;
      filter: none;
+}
+.sub-service-list{
+    padding-top:15px;
+    padding-bottom:15px;
+    box-shadow: 0px 3px 6px 0px slategrey;
+}
+.sub-service-list img {
+
+    max-height: 300px;
+    max-width: 400px;
 }

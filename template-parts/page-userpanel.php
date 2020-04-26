@@ -11,11 +11,7 @@ $post_args = array(
     'meta_key' => 'is-service-page',
     'meta_value' => 'Yes'
 );
-// $post_args1 = array(
-//     'post_type' => 'wck-frontend-posting',
-// );
 
-// $theQuery = new WP_Query($post_args1);  
 $post_query = new WP_Query($post_args);
 $loginUser = wp_get_current_user()->data;
 
@@ -26,6 +22,17 @@ if(!is_user_logged_in())
 exit;
 header('Location: get_site_url()');
 }
+
+$post_args1 = array(
+    'post_type' => 'orderlist',
+    'author__in'=> array($loginUser->ID),
+    'post_status' => array('publish', 'pending', 'draft') ,
+     'orderby' => 'date',
+    'order' => 'DESC',
+);
+
+ $theQuery = new WP_Query($post_args1);  
+
 
 ?>
 
@@ -99,8 +106,7 @@ header('Location: get_site_url()');
 </div>
 </div>
 <!-- /main sidebar -->
-<div class="col-9">
-<!-- <div style="border: 1px solid" class="content-wrapper"> -->
+<div class="col-9 mb-3">
 	<div class="row clearfix">
 		<div class="col-md-12 justify-content-center" >	
 <?php 
@@ -108,21 +114,18 @@ header('Location: get_site_url()');
 //     while ($theQuery->have_posts()) : $theQuery->the_post();
 	foreach ($formIds as $formId) {
 $postData = get_post($formId);
-// print_r($postData);
-
 ?>
-
-		<section id="<?php echo 'form-id-'.$postData->ID ?>" class="form tabContent ">
-		      <div class="container">
-		      <div class="section-title">
-		          <h2  class=""><?php echo $postData->post_title; ?></h2>          
-		      </div>
-			<?php
-			$post_name = $postData->post_name;
-			echo do_shortcode("[fep form_name=$post_name]");
-			?>
-		 	</div>
-		</section>
+<section  id="<?php echo 'form-id-'.$postData->ID ?>" class=" form tabContent ">
+      <div class="container">
+      <div class="section-title">
+          <h2  class=""><?php echo $postData->post_title; ?></h2>          
+      </div>
+	<?php
+	$post_name = $postData->post_name;
+	echo do_shortcode("[fep form_name=$post_name]");
+	?>
+ 	</div>
+</section>
 <?php   
 	}
   	?>
@@ -196,16 +199,44 @@ $postData = get_post($formId);
     <div class="container">
 
         <div class="section-title">
-            <h2>Pricing</h2>
-            <h5>Choose the hours you need. Access all services. Pay one flat rate.</h5>
+            <h2>Your History</h2>
         </div>
-
         <div class="row justify-content-center">
+            <div class="col-lg-9 col-md-9">
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Form Number</th>
+			      <th> Title </th>
+			      <th>Status</th>
+			      <th>Submited Date</th>
+			      <th>Completed Date</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+            	 <?php
+	            if ($theQuery->have_posts()):
+	                while ($theQuery->have_posts()) : $theQuery->the_post();
+	                	$statusP= $post->post_status;
+	                	if($statusP =='draft'){
+	                	$statusP= 'Todo';	}
+	                    ?>
+	                     <tr>						   
+					      <td><?php echo $post->ID; ?></td>
+					      <td><?php echo $post->post_title; ?></td>
+					      <td><?php echo $statusP; ?></td>
+					      <td><?php echo get_the_date( 'j - F - Y' ) ?></td>
+					   	 <td></td>
+					   	 </tr>                
 
-            <div class="col-lg-8 col-md-8">
-            	<?php
-			echo do_shortcode('[wpuf_form id="264"]');
-			?>
+                    <?php
+	                
+	                endwhile;
+	            endif;
+	             wp_reset_postdata();
+	        ?>
+	        </tbody>
+		</table>
    			</div>
 		</div>
 	</div>

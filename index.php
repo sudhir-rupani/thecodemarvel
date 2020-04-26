@@ -61,7 +61,7 @@ get_header();
 
 
 <?php
-echo do_shortcode('');
+// echo do_shortcode('');
 
 // load this while home page else single tmp
 get_template_part('template-parts/content', 'none');
