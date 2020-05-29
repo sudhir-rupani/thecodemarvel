@@ -29,6 +29,48 @@
 
   <!-- Template Main CSS File -->
   <link href="<?php echo get_template_directory_uri()?>/assets/css/style.css" rel="stylesheet">
+
+  <link href="<?php echo get_template_directory_uri()?>/assets/dragboard/jkanban.min.css" rel="stylesheet">
+  
+  <script src="<?php echo get_template_directory_uri() ?>/assets/dragboard/jkanban.js"></script>
+
+  <style type="text/css">
+    
+  .content-wrapper {
+    display: table-cell;
+  }
+}
+
+.main{margin-top:-50px;}
+.sidebar .category-content .nav li > a.sub-menu[data-toggle="collapse"]:after {
+  content: "";
+
+}
+section {
+    padding:0px;
+ 
+}
+.tabContent {
+    display:none;
+}  
+      .success {
+        background: #00b961;
+      }
+
+      .info {
+        background: #2a92bf;
+      }
+
+      .warning {
+        background: #f4ce46;
+      }
+
+      .error {
+        background: #fb7d44;
+      }
+
+  </style>
+
   <style type="text/css">
     
 
@@ -247,9 +289,9 @@ section {
     <div class="container d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="<?php echo home_url();?>"><span>TheCodeMarvel</span></a></h1>
+<!--         <h1 class="text-light"><a href="<?php echo home_url();?>"><span>TheCodeMarvel</span></a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+<a href="index.html"><img src="<?php echo home_url();?>/wp-content/uploads/2020/04/output-onlinepngtools.png" alt="" class="img-fluid"></a>
       </div>
 <nav id="site-navigation" class="nav-menu d-none d-lg-block">
 			<?php

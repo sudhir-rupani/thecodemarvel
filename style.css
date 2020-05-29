@@ -187,3 +187,161 @@ input.wpcf7-form-control.wpcf7-submit {
     max-height: 300px;
     max-width: 400px;
 }
+
+#header .logo img {
+     max-height: 50px;
+}
+.theme-background {
+   background: #ff6b3b ;
+}
+.kanban-board {
+    min-height: 500px;
+}
+.drag_handler_icon {
+    width: 100%;
+}
+.drag_handler {
+    width: 100%;
+}
+.kanban-board header .kanban-title-button{
+    display: none;
+}
+.kanban-board header .kanban-title-board{
+    display: block;
+    text-align: center;
+}
+
+/*------------- WOOCOMMERCE CSS --------------*/
+.woocommerce ul.products li.product .button,
+a.checkout-button.button.alt.wc-forward {
+  margin-top: 1em;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: none;
+}
+.woocommerce span.onsale{
+  background: #313a43;
+  padding: 0;
+  border-radius: 0;
+}
+.products li {
+  box-shadow: 3px 3px 10px 2px #ddd;
+  padding: 10px !important;
+  text-align: center;
+}
+h2.woocommerce-loop-product__title,
+.woocommerce div.product .product_title {
+  color: #313a43;
+  letter-spacing: 1px;
+  font-weight: 800;
+  margin-bottom: 10px !important;
+  font-size: 35px;
+}
+.woocommerce ul.products li.product .price,
+.woocommerce div.product p.price, .woocommerce div.product span.price {
+  color: #313a43;
+  font-size: 15px
+}
+.woocommerce div.product .product_title,.woocommerce div.product p.price, .woocommerce div.product span.price{
+  margin-bottom: 5px !important;
+}
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button,.woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt{
+  background: #2ecc71;
+  color: #fff;
+  padding: 17px;
+  border-radius: 0;
+}
+.woocommerce #respond input#submit:hover, .woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover,.woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover{
+  background: #313a43;
+  color: #fff;
+}
+.woocommerce .quantity .qty {
+  width: 7em;
+  padding: 12px;
+  border: solid 1px #313a43;
+  color: #313a43;
+}
+.col-1,.col-2 {
+  max-width: 100%;
+}
+.woocommerce .col2-set .col-1 {
+  max-width: 100%;
+}
+.woocommerce .col2-set .col-2 {
+  max-width: 100%;
+}
+nav.woocommerce-MyAccount-navigation ul {
+  list-style: none;
+}
+nav.woocommerce-MyAccount-navigation ul li {
+  background: #2ecc71;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 0 0 #313a43;
+  font-weight: bold;
+}
+nav.woocommerce-MyAccount-navigation ul li a{
+  color: #fff;
+}
+span.woocommerce-input-wrapper,
+.checkout label {
+ width: 100%;
+}
+.woocommerce .woocommerce-ordering select {
+  padding: 5px;
+  font-size: 12px;
+}
+span.posted_in {
+  display: block;
+}
+.woocommerce div.product div.images .woocommerce-product-gallery__image:nth-child(n+2) {
+  width: 22%;
+  display: inline-block;
+  margin: 5px;
+}
+.woocommerce-message{
+  border-top-color: #313a43;
+}
+.woocommerce-message::before{
+  color: #313a43;
+}
+nav.woocommerce-MyAccount-navigation ul li a, .woocommerce-account .woocommerce-MyAccount-content a, .woocommerce-info a, .woocommerce-privacy-policy-text a, td.product-name a, a.shipping-calculator-button{
+  text-decoration: none !important;
+}
+.woocommerce div.product .woocommerce-product-rating{
+  margin-bottom: 5px;
+}
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+  width: 29%;
+}
+.woocommerce-Reviews #comments p{
+  float: none;
+}
+.woocommerce .star-rating span, .woocommerce p.stars a{
+  color: #ffd400;
+}
+.woocommerce .products .star-rating{
+  margin: 5px auto;
+}
+.woocommerce ul.cart_list li img, .woocommerce ul.product_list_widget li img {
+  width: 40px;
+}
+.woocommerce #reviews #comments h2{
+  font-size: 25px;
+}
+.select2-container--default .select2-selection--single , input#billing_phone{
+  padding: 10px 0px;
+  border-radius: 0px;
+}
+.select2-container .select2-selection--single, .select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 45px;
+}
+h3#order_review_heading{
+  margin-top: 10px;
+}
+.select2-container--default .select2-selection--single {
+  border: 1px solid #bcbcbc;
+}
+.admin-bar .home-page-header{
+  margin-top: 32px;
+}

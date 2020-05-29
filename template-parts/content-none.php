@@ -61,28 +61,46 @@ $loginUser = is_user_logged_in();
 
         <div class="row justify-content-center">
 
+
+<?php  
+    $args = array(
+        'post_type'      => 'product',
+        'posts_per_page' => 10,
+        'product_cat'    => 'subscription'
+    );
+
+    $productQuery = new WP_Query( $args );
+//echo'<pre>';
+//print_r($productQuery);
+//echo'</pre>';
+    while ( $productQuery->have_posts() ) : $productQuery->the_post();
+        global $product;
+
+			$subscription_price = get_post_meta( get_the_ID(), '_subscription_sign_up_fee', true );
+?>
             <div class="col-lg-3 col-md-6" data-aos="flip-left">
                 <div class="box">
-                    <h3>Starter</h3>
-                    <h4><sup>$</sup>99</h4>
-                    <ul>
-                        <li><h5>5 Hours</h5></li>
-                        <li>Virtual Support</li>
-                        <li>Graphic Design</li>
-                        <li class="">Staffing </li>
-                        <li class="na">Website and Mobile App Development</li>
-                    </ul>
-                    <div class="btn-wrap">                        
-                        <a href="#" class="<?php echo (!$loginUser)?'xoo-el-action-sc xoo-el-login-tgr':'aaaa'?> btn-buy">Buy Now</a>
+                    <h3><?php echo get_the_title() ?></h3>
+                    <h4><sup>$</sup><?php echo $subscription_price;?></h4>
+                    <?php print(htmlspecialchars_decode(get_the_excerpt()));  ?>
+                    <div class="btn-wrap">                       
+						<?php if(!$loginUser){ ?>
+                        <a href="#" class="xoo-el-action-sc xoo-el-login-tgr btn-buy">Buy Now</a>			
+						<?php }else{?>
+                        <a href="<?php echo"?add-to-cart=".get_the_id() ?>" class="btn-buy">Buy Now</a>
+						<?php }?>
                     </div>
                 </div>
             </div>
-
+<?php 
+    endwhile;
+    wp_reset_query();
+?>
             <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="flip-right" >
                 <div class="box ">
-                    <span class="advanced">Popular</span>
                     <h3>Premium</h3>
                     <h4><sup>$</sup>199<span></span></h4>
+                    <span class="advanced">Popular</span>
                     <ul>
                         <li><h5>15 Hours</h5></li>
                         <li>Virtual Support</li>
@@ -112,7 +130,8 @@ $loginUser = is_user_logged_in();
                     </div>
                 </div>
             </div>
-        </div>
+        
+		</div>
 
     </div>
 </section>
